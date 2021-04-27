@@ -17,3 +17,35 @@ class Id implements AST {
     return other instanceof Id && this.value === other.value;
   }
 }
+
+class Not implements AST {
+  constructor(public term: AST) {}
+
+  equals(other: AST): boolean {
+    return other instanceof Not && this.term === other.term;
+  }
+}
+
+class Equal implements AST {
+  constructor(public left: AST, public right: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Equal &&
+      this.left === other.left &&
+      this.right === other.right
+    );
+  }
+}
+
+class NotEqual implements AST {
+  constructor(public left: AST, public right: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof NotEqual &&
+      this.left === other.left &&
+      this.right === other.right
+    );
+  }
+}
