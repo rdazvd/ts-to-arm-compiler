@@ -97,3 +97,35 @@ class Divide implements AST {
     );
   }
 }
+
+class Call implements AST {
+  constructor(public callee: string, public args: Array<AST>) {}
+  equals(other: AST): boolean {
+    return (
+      other instanceof Call &&
+      this.callee === other.callee &&
+      this.args.length === other.args.length &&
+      this.args.every((arg, i) => arg.equals(other.args[i]))
+    );
+  }
+}
+
+class Return implements AST {
+  constructor(public term: AST) {}
+
+  equals(other: AST): boolean {
+    return other instanceof Return && this.term === other.term;
+  }
+}
+
+class Block implements AST {
+  constructor(public statements: Array<AST>) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Block &&
+      this.statements.length === other.statements.length &&
+      this.statements.every((arg, i) => arg.equals(other.statements[i]))
+    );
+  }
+}
