@@ -49,3 +49,51 @@ class NotEqual implements AST {
     );
   }
 }
+
+class Add implements AST {
+  constructor(public left: AST, public right: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Add &&
+      this.left === other.left &&
+      this.right === other.right
+    );
+  }
+}
+
+class Subtract implements AST {
+  constructor(public left: AST, public right: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Subtract &&
+      this.left === other.left &&
+      this.right === other.right
+    );
+  }
+}
+
+class Multiply implements AST {
+  constructor(public left: AST, public right: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Multiply &&
+      this.left === other.left &&
+      this.right === other.right
+    );
+  }
+}
+
+class Divide implements AST {
+  constructor(public left: AST, public right: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Divide &&
+      this.left === other.left &&
+      this.right === other.right
+    );
+  }
+}
