@@ -187,3 +187,15 @@ class Assign implements AST {
     );
   }
 }
+
+class While implements AST {
+  constructor(public conditional: AST, public body: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof While &&
+      this.conditional === other.conditional &&
+      this.body === other.body
+    );
+  }
+}
