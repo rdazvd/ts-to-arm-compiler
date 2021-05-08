@@ -163,3 +163,27 @@ class Func implements AST {
     );
   }
 }
+
+class Var implements AST {
+  constructor(public name: string, public value: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Var &&
+      this.name === other.name &&
+      this.value === other.value
+    );
+  }
+}
+
+class Assign implements AST {
+  constructor(public name: string, public value: AST) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Assign &&
+      this.name === other.name &&
+      this.value === other.value
+    );
+  }
+}
