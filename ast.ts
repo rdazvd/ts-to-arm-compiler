@@ -129,3 +129,20 @@ class Block implements AST {
     );
   }
 }
+
+class If implements AST {
+  constructor(
+    public conditional: AST,
+    public consequence: AST,
+    public alternative: AST
+  ) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof If &&
+      this.conditional === other.conditional &&
+      this.consequence === other.consequence &&
+      this.alternative === other.alternative
+    );
+  }
+}
