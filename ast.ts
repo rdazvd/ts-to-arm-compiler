@@ -146,3 +146,20 @@ class If implements AST {
     );
   }
 }
+
+class Func implements AST {
+  constructor(
+    public name: string,
+    public parameters: Array<string>,
+    public body: AST
+  ) {}
+
+  equals(other: AST): boolean {
+    return (
+      other instanceof Func &&
+      this.name === other.name &&
+      this.parameters === other.parameters &&
+      this.body === other.body
+    );
+  }
+}
