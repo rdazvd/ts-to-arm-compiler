@@ -26,4 +26,7 @@ interface Parser<T> {
 
 class Parser<T> {
   constructor(public parse: (source: Source) => ParseResult<T> | null) {}
+  static regexp(regexp: RegExp): Parser<string> {
+    return new Parser((source) => source.match(regexp));
+  }
 }
