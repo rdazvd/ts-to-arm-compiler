@@ -23,3 +23,7 @@ class ParseResult<T> {
 interface Parser<T> {
   parse(source: Source): ParseResult<T> | null;
 }
+
+class Parser<T> {
+  constructor(public parse: (source: Source) => ParseResult<T> | null) {}
+}
